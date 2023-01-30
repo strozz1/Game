@@ -15,6 +15,7 @@ public:
 	Entity CreateEntity(const std::string& name = std::string());
 
 	void onUpdate();
+	void onRender();
 
 private:
 

@@ -4,6 +4,8 @@
 
 SDL_Renderer* Game::renderer = nullptr;
 Scene* scene= nullptr;
+Entity player;
+
 
 Game::Game()
 {
@@ -32,18 +34,23 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		//Check if renderer is created succesfully
 		if (renderer) Logger::LOG("Renderer created succesfully", Logger::INFO);
+		SDL_SetRenderDrawColor(renderer, 255, 5, 155, 233);
 
 		running = true;
 	}
 	else {
 		running = false;
 	}
+	
 
 	scene = new Scene();
-	Entity player = scene->CreateEntity("Player1");
+	player = scene->CreateEntity("Player1");
+	player.AddComponent<TextureComponent>("./src/assets/player.png");
 
-	TagComponent tag = player.GetComponent<TagComponent>();
-	std::cout << tag.Tag << std::endl;
+	TextureComponent tex = player.GetComponent<TextureComponent>();
+	TransformComponent trans = player.GetComponent<TransformComponent>();
+	std::cout << trans.srcRect.x << std::endl;
+
 
 
 
@@ -70,10 +77,17 @@ void Game::handleEvents()
 
 void Game::update()
 {
+
+
+	scene->onUpdate();
 }
 
 void Game::render()
 {
+	SDL_RenderClear(renderer);
+	scene->onRender();
+	SDL_RenderPresent(renderer);
+
 }
 
 void Game::clean()

@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>E:\Programacion\Libraries\SDL2 2.26.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Programacion\Libraries\SDL2 2.26.2\lib\x64;E:\Programacion\Libraries\SDL2_image 2.6.2\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programacion\Libraries\SDL2_image 2.6.2\include;E:\Programacion\Libraries\SDL2 2.26.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Programacion\Libraries\SDL2 2.26.2\include;E:\Programacion\Libraries\SDL2_image-2.6.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -136,6 +140,7 @@
     <ClCompile Include="src\core\ECS\Entity.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\core\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\ECS\Component.h" />
@@ -143,6 +148,7 @@
     <ClInclude Include="src\core\ECS\Entity.h" />
     <ClInclude Include="src\core\Game.h" />
     <ClInclude Include="src\Logger\Logger.h" />
+    <ClInclude Include="src\core\TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "Component.h"
+#include "../../Logger/Logger.h"
+#include "../Game.h"
 Scene::Scene()
 {
 }
@@ -24,4 +26,19 @@ Entity Scene::CreateEntity(const std::string& name)
 
 void Scene::onUpdate()
 {
+
+}
+
+void Scene::onRender()
+{
+	//Render all texture components
+	auto view = registry.view<TransformComponent, TextureComponent>();
+	for (auto entity : view) {
+		auto& texture = view.get<TextureComponent>(entity);
+		auto& transform = view.get<TransformComponent>(entity);
+
+		SDL_RenderCopy(Game::renderer, texture.texture, &transform.srcRect, &transform.destRect);
+
+
+	}
 }

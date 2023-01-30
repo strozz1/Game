@@ -9,6 +9,7 @@ class Entity
 {
 
 public:
+	Entity();
 	Entity(entt::entity handle, Scene* scene);
 	~Entity();
 
@@ -37,6 +38,10 @@ public:
 	template <typename T>
 	bool HasComponent() {
 		return scene->registry.all_of<T>(m_EntityHandle);
+	}
+
+	//Render the entity
+	void Render() {
 	}
 
 

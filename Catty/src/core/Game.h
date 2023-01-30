@@ -1,6 +1,5 @@
 #include "SDL.h"
 #include "../Logger/Logger.h"
-
 class Game
 {
 public:

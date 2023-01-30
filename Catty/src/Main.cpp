@@ -4,7 +4,6 @@ Game* game = nullptr;
 const int FPS = 60;
 
 //Time between frames
-const int frameDelay = 1000/FPS;
 
 int main(int argc, char* argv[]) {
 
@@ -12,6 +11,7 @@ int main(int argc, char* argv[]) {
 	//Init game
 	game->init("Prueba de juego", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
+	int frameDelay = 1000 / FPS;
 	int frameTime;
 	Uint32 frameStart;
 

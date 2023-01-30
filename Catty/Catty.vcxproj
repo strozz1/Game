@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>E:\Programacion\Libraries\SDL2_image 2.6.2\include;E:\Programacion\Libraries\SDL2 2.26.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,10 +131,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\ECS\Component.cpp" />
+    <ClCompile Include="src\core\ECS\Scene.cpp" />
+    <ClCompile Include="src\core\ECS\Entity.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\ECS\Component.h" />
+    <ClInclude Include="src\core\ECS\Scene.h" />
+    <ClInclude Include="src\core\ECS\Entity.h" />
     <ClInclude Include="src\core\Game.h" />
     <ClInclude Include="src\Logger\Logger.h" />
   </ItemGroup>

@@ -1,6 +1,9 @@
 #include "Game.h"
+#include "ECS/Entity.h"
+#include "ECS/Component.h"
 
 SDL_Renderer* Game::renderer = nullptr;
+Scene* scene= nullptr;
 
 Game::Game()
 {
@@ -14,7 +17,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 {
 	//Check if fullscreen option is true. If so, set fullscreen flag for the window
 	int flags = 0;
-	if (fullscreen) flags= SDL_WINDOW_FULLSCREEN;
+	if (fullscreen) flags = SDL_WINDOW_FULLSCREEN;
 
 	//Init SDL2 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
@@ -24,18 +27,28 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 		//Check if window is created succesfully
 		if (window) Logger::LOG("Window created succesfully", Logger::INFO);
-		
+
 		//Instantiate renderer
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		//Check if renderer is created succesfully
 		if (renderer) Logger::LOG("Renderer created succesfully", Logger::INFO);
-		
+
 		running = true;
 	}
 	else {
 		running = false;
 	}
 
+	scene = new Scene();
+	Entity player = scene->CreateEntity("Player1");
+
+	TagComponent tag = player.GetComponent<TagComponent>();
+	std::cout << tag.Tag << std::endl;
+
+
+
+
+	
 
 
 }
@@ -46,12 +59,12 @@ void Game::handleEvents()
 	SDL_Event event;
 	SDL_PollEvent(&event);
 	switch (event.type) {
-		case SDL_QUIT:
-			//If X button is pressed, set running to false
-			running = false;
-			break;
-		default:
-			break;
+	case SDL_QUIT:
+		//If X button is pressed, set running to false
+		running = false;
+		break;
+	default:
+		break;
 	}
 }
 

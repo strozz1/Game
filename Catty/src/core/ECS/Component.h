@@ -1,32 +1,22 @@
 #pragma once
 #include <string>
 #include "../TextureManager.h"
+#include "../Vector2D.h"
 
 struct TransformComponent{
-	int x_pos;
-	int y_pos;
-	SDL_Rect srcRect, destRect;
 
-	//Defaut constructor if no args passed. Default position at (0,0).
-	TransformComponent() : x_pos(0), y_pos(0) {
-		srcRect.h = 32;
-		srcRect.w = 32;
-		srcRect.x = 0;
-		srcRect.y = 0;
+	Vector2D position;
+	Vector2D size;
+	float scale;
 
-		destRect.x = x_pos;
-		destRect.y = y_pos;
-		destRect.w = srcRect.w * 2;
-		destRect.h = srcRect.h * 2;
+	//Defaut constructor if no args passed. Default position at (0,0) size (32,32).
+	TransformComponent() :position(0.0f,0.0f),size(32.0f,32.0f),scale(1.0f) {
 	}
 	//Constructor with x & y coordenates.
-	TransformComponent(int x,int y,int width,int heigth) : x_pos(x), y_pos(y)  {
-		
+	TransformComponent(float x,float y, float width, float heigth,float scaleProp) : position(x, y), size(width, heigth),scale(scaleProp) {
 	}
 
 	void move(int x,int y) {
-		x_pos += x;
-		y_pos += y;
 
 	}
 

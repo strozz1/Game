@@ -37,7 +37,21 @@ void Scene::onRender()
 		auto& texture = view.get<TextureComponent>(entity);
 		auto& transform = view.get<TransformComponent>(entity);
 
-		SDL_RenderCopy(Game::renderer, texture.texture, &transform.srcRect, &transform.destRect);
+		//Create rectangles
+		SDL_Rect srcRect, destRect;
+		//src rectangle
+		srcRect.x = 0;
+		srcRect.y = 0;
+		srcRect.w = transform.size.x;
+		srcRect.h = transform.size.y;
+
+		//dest rectangle
+		destRect.x = transform.position.x;
+		destRect.y = transform.position.y;
+		destRect.w = srcRect.w * transform.scale;
+		destRect.h = srcRect.h * transform.scale;
+		
+		SDL_RenderCopy(Game::renderer, texture.texture, &srcRect, &destRect);
 
 
 	}

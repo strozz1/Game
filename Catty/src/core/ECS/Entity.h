@@ -24,6 +24,12 @@ public:
 	template<typename T>
 	T& GetComponent() {
 		return scene->registry.get<T>(m_EntityHandle);
+		
+	}
+	//Replace component from entity
+	template<typename T, typename... Args>
+	T& ReplaceComponent(Args&&... args) {
+		return scene->registry.replace<T>(m_EntityHandle, std::forward<Args>(args)...);
 	}
 
 	//Remove component function

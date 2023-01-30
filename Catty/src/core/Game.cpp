@@ -44,18 +44,13 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	
 
 	scene = new Scene();
+
 	player = scene->CreateEntity("Player1");
 	player.AddComponent<TextureComponent>("./src/assets/player.png");
-
-	TextureComponent tex = player.GetComponent<TextureComponent>();
 	TransformComponent trans = player.GetComponent<TransformComponent>();
-	std::cout << trans.srcRect.x << std::endl;
-
-
-
-
-
-	
+	trans.scale = 5.0f;
+	trans.position = { 500.0f,120.0f };
+	player.ReplaceComponent<TransformComponent>(trans.position.x, trans.position.y, trans.size.x, trans.size.y,trans.scale);
 
 
 }
